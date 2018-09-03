@@ -3,6 +3,8 @@ import { AuthenticationComponent } from './container/authentication/authenticati
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule   } from '@angular/forms';
+import { AuthenticationRoutingModule } from './authentication-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { ReactiveFormsModule, FormsModule   } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    AuthenticationRoutingModule
   ],
   exports: [
     AuthenticationComponent
