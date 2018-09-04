@@ -4,7 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
- 
+  {
+    path: ' ',
+    loadChildren: 'src/app/Modules/authentication/authentication.module#AuthenticationModule'
+  },
   {
     path: 'authentication',
     loadChildren: 'src/app/Modules/authentication/authentication.module#AuthenticationModule'

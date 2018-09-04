@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table table-condensed" style="border:1px solid black">
+  <table class="table table-striped" style="border:1px solid black">
       <thead>
           <tr>
             <th>Name</th>
@@ -14,8 +14,8 @@
         <td> {{products.description}} </td>
         <td> {{products.price}} </td>
         <td> 
-            <button type="button" *ngIf="showAddBUtton" class="btn btn-primary" (click)="addToCart(products)" > Add </button>
-            <button type="button" *ngIf="showDeleteButton" class="btn btn-primary" (click)="deleteFromCart(products)" > Delete </button>
+            <button type="button" *ngIf="showAddBUtton" class="btn btn-primary" (click)="addToCart(products);showToastr(products,'  is added to the cart')" > Add </button>
+            <button type="button" *ngIf="showDeleteButton" class="btn btn-primary" (click)="deleteFromCart(products);showToastr(products,' is deleted from the cart')" > Delete </button>
 
         </td>
       </tr>

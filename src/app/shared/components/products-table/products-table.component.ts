@@ -1,7 +1,7 @@
 import { DataService } from './../../services/data.service';
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { ProductsMOdel } from '../../../Modules/all-products/models/all-products.model';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products-table',
@@ -15,7 +15,7 @@ export class ProductsTableComponent implements OnInit {
  @Input() componentName: any;
   showAddBUtton: boolean;
   showDeleteButton: boolean;
- constructor( private _dataService: DataService  ) {}
+ constructor( private _dataService: DataService, private _toastr: ToastrService  ) {}
     ngOnInit() {
         this.showButton(this.componentName);
         this._dataService.product.subscribe( product => this.newProduct = product );
@@ -36,6 +36,10 @@ export class ProductsTableComponent implements OnInit {
         } else {
           this.showDeleteButton = true;
         }
+    }
+
+    showToastr(product,message) {
+      this._toastr.success(product.name+message);
     }
 
 }

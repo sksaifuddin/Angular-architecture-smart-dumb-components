@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule   } from '@angular/forms';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    ToastrModule.forRoot()
   ],
   exports: [
     AuthenticationComponent
