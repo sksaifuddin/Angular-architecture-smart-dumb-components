@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { DataService } from './../../services/data.service';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import { ProductsMOdel } from '../../../Modules/all-products/models/all-products.model';
+
 
 @Component({
   selector: 'app-products-table',
@@ -7,31 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsTableComponent implements OnInit {
  data: any;
-  constructor() {
-     this.data = [
-      {
-        id: 1,
-        name: 'mobile',
-        description: 'its a nice mobile',
-        price: 45000
-      },
-      {
-        id: 2,
-        name: 'Laptop',
-        description: 'its a great laptop',
-        price: 35000
-      },
-      {
-        id: 3,
-        name: 'Mouse',
-        description: 'its a nice mouse',
-        price: 1000
-      },
+ newProduct: ProductsMOdel[];
+ @Input() products: ProductsMOdel[];
+ @Input() componentName: any;
+  showAddBUtton: boolean;
+  showDeleteButton: boolean;
+ constructor( private _dataService: DataService  ) {}
+    ngOnInit() {
+      console.log('compName', this.componentName);
+      this.showButton(this.componentName);
+        this._dataService.product.subscribe( product => this.newProduct = product );
+    }
 
-    ];
-   }
-  ngOnInit() {
-    console.log(this.data);
-  }
+    addToCart(product) {
+      // this.productEmitter.emit(product);
+      this._dataService.getCartProduct(product);
+    }
+
+    showButton(compName) {
+        if (compName === 'allproducts') {
+            this.showAddBUtton = true;
+        } else {
+          this.showDeleteButton = true;
+        }
+    }
 
 }

@@ -1,10 +1,23 @@
 <div class="container">
-  <table class="table table-condensed">
+  <table class="table table-condensed" style="border:1px solid black">
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th> Price </th>
+            <th> Action </th>
+          </tr>
+        </thead>
     <tbody>
-      <tr  *ngFor="let products of data">
+      <tr  *ngFor="let products of products">
         <td> {{products.name}} </td>
         <td> {{products.description}} </td>
         <td> {{products.price}} </td>
+        <td> 
+            <button type="button" *ngIf="showAddBUtton" class="btn btn-primary" (click)="addToCart(products)" > Add </button>
+            <button type="button" *ngIf="showDeleteButton" class="btn btn-primary" (click)="deleteFromCart(products)" > Delete </button>
+
+        </td>
       </tr>
     </tbody>
   </table>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ProductsMOdel } from './../../models/all-products.model';
+import { AllProductsService } from './../../services/all-products.service';
+import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-all-products-list',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllProductsListComponent implements OnInit {
 
-  constructor() { }
+  products: ProductsMOdel[];
+  componentName: string;
+  constructor( private _allProducts: AllProductsService ) { }
 
   ngOnInit() {
+    this.getAllProducts();
   }
+
+getAllProducts() {
+    const products = this._allProducts.getAllProducts();
+    this.setAllProducts(products);
+}
+
+setAllProducts( allProducts ) {
+  this.products = allProducts;
+  this.componentName = 'allproducts';
+}
+
+getProduct(product) {
+  console.log('prooddd', product);
+}
+
 
 }

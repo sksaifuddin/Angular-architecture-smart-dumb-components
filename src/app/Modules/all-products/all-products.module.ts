@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +9,8 @@ import { AllProductsListComponent } from './container/all-products-list/all-prod
 @NgModule({
   imports: [
     CommonModule,
-    AllProductsRoutingModule
+    AllProductsRoutingModule,
+    SharedModule
   ],
   declarations: [AllProductsListComponent],
   exports: [
