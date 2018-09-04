@@ -17,14 +17,17 @@ export class ProductsTableComponent implements OnInit {
   showDeleteButton: boolean;
  constructor( private _dataService: DataService  ) {}
     ngOnInit() {
-      console.log('compName', this.componentName);
-      this.showButton(this.componentName);
+        this.showButton(this.componentName);
         this._dataService.product.subscribe( product => this.newProduct = product );
     }
 
     addToCart(product) {
-      // this.productEmitter.emit(product);
       this._dataService.getCartProduct(product);
+    }
+
+    deleteFromCart(product) {
+      const idToRemove = product.id;
+      this._dataService.removeFromCart(idToRemove);
     }
 
     showButton(compName) {
